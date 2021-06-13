@@ -5,7 +5,7 @@ var allCharacters = {
   lowerCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"],
   upperCase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
   number: [1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 0],
-  symbols: ["!", "#", "$", "%", "£", "&", "(", ")", "+", "-", ",", ".", "/", ":", ";", "<", ">", "?", "@"]
+  symbol: ["!", "#", "$", "%", "£", "&", "(", ")", "+", "-", ",", ".", "/", ":", ";", "<", ">", "?", "@"]
 };
 
 //Where we will store the chose character types for our password
@@ -14,7 +14,9 @@ var containsLower;
 var containsUpper;
 var containsNum;
 var containsSymb;
-
+var passwordLen = 0;
+var output = "";
+var randomArray;
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -31,9 +33,11 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword());
 
 function generatePassword(){
-  
-  //create our character arrays inside an object?
-  //prompts for catergories lowercase (default), uppercase, number, symbol.
+  //prompt for password length. force loop if outside min/max length
+  while(passwordLen < 8 || passwordLen > 128){
+    passwordLen = prompt("Please enter your password length between 8 - 128.")
+  }
+  //prompts for catergories lowercase, uppercase, number, symbol.
   while(chosenCharacters.length === 0){
     containsLower = confirm("Do you want the password to contain lowercase letters (a, b, c, etc)?");
     if (containsLower){
@@ -56,15 +60,23 @@ function generatePassword(){
       confirm("You have not selected any options.")
     }
   }
-  //prompt for password length. 
-  //create a loop that iterates through that many times
-  //create an output variable that we'll tack each character onto.
+  
+  //create a loop that iterates through that many times, generating password characters.
+  for(i = 0; i < passwordLen; i++){
 
+    //pick which character array we are selecting from
+    randomArray = chosenCharacters[Math.floor(Math.random() * (chosenCharacters.length))];
+    //pick the random character and tack it onto the string
+    output += allCharacters[randomArray][Math.floor(Math.random() * allCharacters[randomArray].length)];
+  }
+
+  console.log(output);
+  
+  //STILL TO DO
   //guarantee that we have 1 of each character (just do them at the start?)
-
   //run through randomly for the remainder.
-  
-  
-
+  //Work out how to input to box
+  //REFACTOR
+  //README
 
 }
