@@ -8,16 +8,6 @@ var allCharacters = {
   symbol: ["!", "#", "$", "%", "£", "&", "(", ")", "+", "-", ",", ".", "/", ":", ";", "<", ">", "?", "@"]
 };
 
-//Where we will store the chose character types for our password
-var chosenCharacters = [];
-var containsLower;
-var containsUpper;
-var containsNum;
-var containsSymb;
-var passwordLen = 0;
-var output = "";
-var randomArray;
-
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -29,10 +19,18 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword());
-
 function generatePassword(){
+  //Variables we will use in the generatePassword function
+  var chosenCharacters = [];
+  var containsLower = false;
+  var containsUpper = false;
+  var containsNum = false;
+  var containsSymb = false;
+  var passwordLen = 0;
+  var output = "";
+  var randomArray = 0;
+
+
   //prompt for password length. force loop if outside min/max length
   while(passwordLen < 8 || passwordLen > 128){
     passwordLen = prompt("Please enter your password length between 8 - 128.")
@@ -60,23 +58,24 @@ function generatePassword(){
       confirm("You have not selected any options.")
     }
   }
-  
   //create a loop that iterates through that many times, generating password characters.
   for(i = 0; i < passwordLen; i++){
-
-    //pick which character array we are selecting from
+    // randomly pick which character array we are selecting from
     randomArray = chosenCharacters[Math.floor(Math.random() * (chosenCharacters.length))];
     //pick the random character and tack it onto the string
     output += allCharacters[randomArray][Math.floor(Math.random() * allCharacters[randomArray].length)];
   }
+  return output;
+}
 
-  console.log(output);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword());
+
   
-  //STILL TO DO
-  //guarantee that we have 1 of each character (just do them at the start?)
-  //run through randomly for the remainder.
-  //Work out how to input to box
+
+
+
+
+//STILL TO DO
   //REFACTOR
   //README
-
-}
