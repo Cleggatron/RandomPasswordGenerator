@@ -78,6 +78,3 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
-//STILL TO DO
-  //REFACTOR
-  //README
