@@ -16,7 +16,7 @@ Once the user clicks the "Generate Password" button they will receive sequential
 
 The character types chosen are stored in an array which then allows for access to the arrays of available characters. The program loops through this for the total length of the array.
 
-![PageScreenshot](./Assets/Visual.screenshot.PNG)
+![PageScreenshot](Assets/Visual/screenshot.PNG)
 
 ## Credits
 
