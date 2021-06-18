@@ -5,7 +5,7 @@ var allCharacters = {
   lowerCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"],
   upperCase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
   number: [1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 0],
-  symbol: ["!", "#", "$", "%", "£", "&", "(", ")", "+", "-", ",", ".", "/", ":", ";", "<", ">", "?", "@"]
+  symbol: ["!", "#", "$", "%", "£", "&", "(", ")", "+", "-", ",", ".", "/", ":", ";", "<", ">", "?", "@","[","^","]","`","_","`","{","|","}"]
 };
 
 // Assignment Code
@@ -28,8 +28,7 @@ function generatePassword(){
   var containsSymb = false;
   var passwordLen = 0;
   var output = "";
-  var randomArray = 0;
-
+  var passwordCharacters = 0;
 
   //prompt for password length. force loop if outside min/max length
   while(passwordLen < 8 || passwordLen > 128){
@@ -55,15 +54,16 @@ function generatePassword(){
     }
     //check to make sure we have some symbols selected and prompt user
     if(chosenCharacters.length === 0){
-      confirm("You have not selected any options.")
+      confirm("You have not selected any options.");
     }
   }
+
   //create a loop that iterates through that many times, generating password characters.
   for(i = 0; i < passwordLen; i++){
     // randomly pick which character array we are selecting from
-    randomArray = chosenCharacters[Math.floor(Math.random() * (chosenCharacters.length))];
+    passwordCharacters = chosenCharacters[Math.floor(Math.random() * (chosenCharacters.length))];
     //pick the random character and tack it onto the string
-    output += allCharacters[randomArray][Math.floor(Math.random() * allCharacters[randomArray].length)];
+    output += allCharacters[passwordCharacters][Math.floor(Math.random() * allCharacters[passwordCharacters].length)];
   }
   return output;
 }
