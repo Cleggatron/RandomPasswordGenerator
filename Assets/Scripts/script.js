@@ -4,8 +4,8 @@
 var allCharacters = {
   lowerCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y","z"],
   upperCase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
-  number: [1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 0],
-  symbol: ["!", "#", "$", "%", "£", "&", "(", ")", "+", "-", ",", ".", "/", ":", ";", "<", ">", "?", "@","[","^","]","`","_","`","{","|","}"]
+  numbers: [1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 0],
+  symbols: ["!", "#", "$", "%", "£", "&", "(", ")", "+", "-", ",", ".", "/", ":", ";", "<", ">", "?", "@","[","^","]","`","_","`","{","|","}"]
 };
 
 // Assignment Code
@@ -46,17 +46,19 @@ function generatePassword(){
     }
     containsNum = confirm("Do you want the password to contain numbers (1, 2, 3, etc)?");
     if (containsNum){
-      chosenCharacters[chosenCharacters.length] = "number";
+      chosenCharacters[chosenCharacters.length] = "numbers";
     }
     containsSymb = confirm("Do you want the password to contain symbols (!, ?, %, etc)?");
     if (containsSymb){
-      chosenCharacters[chosenCharacters.length] = "symbol";
+      chosenCharacters[chosenCharacters.length] = "symbols";
     }
     //check to make sure we have some symbols selected and prompt user
     if(chosenCharacters.length === 0){
       confirm("You have not selected any options.");
     }
   }
+  //confirm our character selections
+  confirm("The character type(s) chosen for the password include: " + chosenCharacters.join(' '));
 
   //create a loop that iterates through that many times, generating password characters.
   for(i = 0; i < passwordLen; i++){
